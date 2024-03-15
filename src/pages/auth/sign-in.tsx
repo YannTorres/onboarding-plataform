@@ -34,8 +34,8 @@ export function SignIn() {
             Acompanhe as novidades da empresa através do nosso painel!
           </p>
           <div className="w-[70%] space-y-2 pb-1">
-            <Label htmlFor="email">Email / Matricula:</Label>
-            <Input id="email" type="email" placeholder="Email / Matrícula" />
+            <Label htmlFor="email">Email:</Label>
+            <Input id="email" type="email" placeholder="Email" />
           </div>
           <div className="w-[70%] space-y-2 pb-4">
             <Label htmlFor="password">Senha:</Label>

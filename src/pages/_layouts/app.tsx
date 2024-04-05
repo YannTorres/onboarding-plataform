@@ -45,7 +45,7 @@ export function AppLayout() {
         </nav>
         <AccountMenu />
       </div>
-      <div>
+      <div className="flex flex-1 flex-col gap-4 px-16 pt-14">
         <Outlet />
       </div>
     </div>

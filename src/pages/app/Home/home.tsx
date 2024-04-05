@@ -2,12 +2,12 @@ import Logo from '@/assets/Logo Workday.svg'
 
 export function Home() {
   return (
-    <div className="flex flex-col items-center justify-center pt-8">
+    <div className="flex flex-col items-center justify-center">
       <h1 className="text-5xl font-bold">Boas vindas a nossa plataforma!</h1>
       <p className="mt-1 text-xl font-semibold">
         Aqui você vai encontrar tudo para ajudar o seu dia a dia na Workday.
       </p>
-      <div className="grid grid-cols-2 gap-24 px-32 pt-16">
+      <div className="grid grid-cols-2 gap-24 pt-16">
         <div>
           <h2 className="text-3xl font-semibold">O que é a Workday:</h2>
           <p className="leading-7">

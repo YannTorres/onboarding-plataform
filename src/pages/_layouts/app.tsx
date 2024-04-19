@@ -11,6 +11,7 @@ import { Outlet } from 'react-router-dom'
 import Logo from '@/assets/Logo Workday.svg'
 import { AccountMenu } from '@/components/account-menu'
 import { NavLink } from '@/components/nav-link'
+import { Toaster } from '@/components/ui/toaster'
 
 export function AppLayout() {
   return (
@@ -47,6 +48,7 @@ export function AppLayout() {
       </div>
       <div className="flex flex-1 flex-col gap-4 px-16 pt-14">
         <Outlet />
+        <Toaster />
       </div>
     </div>
   )

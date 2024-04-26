@@ -1,4 +1,4 @@
-import { LogOut, User } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 
 import {
   DropdownMenu,
@@ -18,8 +18,7 @@ export function AccountMenu() {
           className="flex select-none justify-center gap-2 p-5 text-sm"
           variant="outline"
         >
-          <User className="h-4 w-4" />
-          Minha Conta
+          Olá 👋 Eduardo!
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="w-[150px]">

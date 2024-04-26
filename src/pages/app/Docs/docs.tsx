@@ -1,3 +1,5 @@
+import { Cards } from './cards'
+
 export function Docs() {
   return (
     <div>
@@ -20,7 +22,7 @@ export function Docs() {
               allowFullScreen
             ></iframe>
             <p className="mt-1 w-[390px] text-xl font-semibold">
-              Tour Workday (conheça a nossa empresa).
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
           <div>
@@ -34,7 +36,7 @@ export function Docs() {
               allowFullScreen
             ></iframe>
             <p className="mt-1 w-[390px] text-xl font-semibold">
-              Ferramentas necessárias para a sua organização na empresa.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             </p>
           </div>
           <div>
@@ -48,7 +50,7 @@ export function Docs() {
               allowFullScreen
             ></iframe>
             <p className="mt-1 w-[390px] text-xl font-semibold">
-              Como cativar um cliente?
+              Lorem ipsum dolor sit amet consectetur.
             </p>
           </div>
           <div>
@@ -62,17 +64,17 @@ export function Docs() {
               allowFullScreen
             ></iframe>
             <p className="mt-1 w-[390px] text-xl font-semibold">
-              Como organizar suas finanças?
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
         </div>
         <div className="grid grid-cols-2 grid-rows-3">
-          <p>Card</p>
-          <p>Card</p>
-          <p>Card</p>
-          <p>Card</p>
-          <p>Card</p>
-          <p>Card</p>
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
         </div>
       </div>
     </div>

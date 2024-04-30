@@ -1,12 +1,15 @@
 import { DialogContent } from '@radix-ui/react-dialog'
 
-import { DialogDescription, DialogHeader } from '@/components/ui/dialog'
+import { DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 
 export function NewPost() {
   return (
     <DialogContent className="absolute">
-      <DialogHeader>Adicionar um Novo Post</DialogHeader>
-      <DialogDescription>Detalhes do Post</DialogDescription>
+      <DialogHeader>
+        <DialogTitle>Adicionar um Novo Post</DialogTitle>
+        <DialogDescription>Detalhes do Post</DialogDescription>
+      </DialogHeader>
+      
     </DialogContent>
   )
 }

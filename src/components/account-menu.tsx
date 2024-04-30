@@ -18,7 +18,7 @@ export function AccountMenu() {
           className="flex select-none justify-center gap-2 p-5 text-sm"
           variant="outline"
         >
-          Olá 👋 Eduardo!
+          Olá 👋 Thaynara!
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="w-[150px]">

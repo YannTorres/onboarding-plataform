@@ -1,13 +1,17 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 import Gordao from '@/assets/gordao.png'
 import Lucon from '@/assets/lucon.png'
+import MeuAmor from '@/assets/meuamor.png'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
@@ -15,30 +19,52 @@ import { Label } from '@/components/ui/label'
 
 import { PostsForum } from './posts-forum'
 
+const newPostFormSchema = z.object({
+  title: z.string().min(1),
+  name: z.string().min(1),
+})
+
+type newPostForm = z.infer<typeof newPostFormSchema>
+
 export type Post = {
   photo: string
   title: string
   name: string
 }
 
-const postsArray: Post[] = [
-  {
-    photo: Lucon,
-    title: '@fluentui/react-context-selector ou use-context-selector',
-    name: 'Lucas Tucunduva',
-  },
-  {
-    photo: Gordao,
-    title: 'Problema com a requisição Restaurant',
-    name: 'Luiz Felipe Medeiros',
-  },
-]
 export function Forum() {
   const [busca, setBusca] = useState('')
+  const [postsArray, setPostsArray] = useState<Post[]>([
+    {
+      photo: Lucon,
+      title: '@fluentui/react-context-selector ou use-context-selector',
+      name: 'Lucas Tucunduva',
+    },
+    {
+      photo: Gordao,
+      title: 'Problema com a requisição Restaurant',
+      name: 'Luiz Felipe Medeiros',
+    },
+  ])
 
   const postsFiltrados = postsArray.filter((post) =>
     post.title.toLowerCase().includes(busca.toLowerCase()),
   )
+
+  const { handleSubmit, register, reset } = useForm<newPostForm>({
+    resolver: zodResolver(newPostFormSchema),
+  })
+
+  function handleForm(data: newPostForm) {
+    const post = {
+      photo: MeuAmor,
+      title: data.title,
+      name: data.name,
+    }
+
+    setPostsArray([...postsArray, post])
+    reset()
+  }
 
   return (
     <div className="flex flex-col gap-14">
@@ -65,8 +91,33 @@ export function Forum() {
                 </Button>
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader>Adicionar um Novo Post</DialogHeader>
-                <DialogDescription>Detalhes do Post</DialogDescription>
+                <DialogHeader>
+                  <DialogTitle>Adicionar um novo Post</DialogTitle>
+                  <form
+                    onSubmit={handleSubmit(handleForm)}
+                    className="flex flex-col"
+                  >
+                    <Label htmlFor="postTitle" className="mb-2 mt-5">
+                      Titulo do Post:
+                    </Label>
+                    <Input
+                      {...register('title')}
+                      id="postTitle"
+                      placeholder="Adicione um Título para o seu Post."
+                    />
+                    <Label htmlFor="postName" className="mb-2 mt-2">
+                      Seu Nome:
+                    </Label>
+                    <Input
+                      {...register('name')}
+                      id="postName"
+                      placeholder="Qual o seu nome?"
+                    />
+                    <Button className="mt-2 bg-teal-800 px-7 text-white hover:bg-teal-700">
+                      Enviar o Post
+                    </Button>
+                  </form>
+                </DialogHeader>
               </DialogContent>
             </Dialog>
           </div>

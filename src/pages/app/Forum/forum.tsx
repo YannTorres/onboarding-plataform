@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useAuth } from '@/contexts/authContext'
 
 import { PostsForum } from './posts-forum'
 
@@ -33,6 +34,7 @@ export type Post = {
 }
 
 export function Forum() {
+  const { currentUser } = useAuth()
   const [busca, setBusca] = useState('')
   const [postsArray, setPostsArray] = useState<Post[]>([
     {
@@ -45,6 +47,11 @@ export function Forum() {
       title: 'Problema com a requisição Restaurant',
       name: 'Luiz Felipe Medeiros',
     },
+    {
+      photo: MeuAmor,
+      title: 'Problemas com Autenticação no Next',
+      name: 'Thaynara Damazio',
+    },
   ])
 
   const postsFiltrados = postsArray.filter((post) =>
@@ -56,14 +63,16 @@ export function Forum() {
   })
 
   function handleForm(data: newPostForm) {
-    const post = {
-      photo: MeuAmor,
-      title: data.title,
-      name: data.name,
-    }
+    if (currentUser) {
+      const post = {
+        photo: currentUser?.photoURL,
+        title: data.title,
+        name: data.name,
+      }
 
-    setPostsArray([...postsArray, post])
-    reset()
+      setPostsArray([...postsArray, post])
+      reset()
+    }
   }
 
   return (

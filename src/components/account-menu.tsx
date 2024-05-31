@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
@@ -24,13 +25,24 @@ export function AccountMenu() {
           variant="outline"
         >
           {currentUser
-            ? `Olá 👋 ${currentUser.displayName ? currentUser.displayName : currentUser.email}!`
+            ? `Olá 👋 ${currentUser.displayName ? currentUser.displayName : currentUser.email?.split('@')[0]}!`
             : 'Logue na Aplicação.'}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="w-[150px]">
-        <DropdownMenuItem>Perfil</DropdownMenuItem>
-        <DropdownMenuItem>Configurações</DropdownMenuItem>
+        <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <button
+            onClick={() => {
+              navigate('/settings')
+            }}
+            className="w-full"
+          >
+            Configurações
+          </button>
+        </DropdownMenuItem>
+        <DropdownMenuItem>Suporte</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="text-rose-400">
           <button

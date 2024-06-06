@@ -28,6 +28,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  console.log(currentUser)
+  console.log('=======')
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, initializeUser)
     return unsubscribe

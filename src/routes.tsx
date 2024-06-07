@@ -6,7 +6,6 @@ import { Forum } from './pages/app/Forum/forum'
 import { Home } from './pages/app/Home/home'
 import { Meet } from './pages/app/Meet/meet'
 import { Report } from './pages/app/Report/report'
-import { Profile } from './pages/app/settings/Profile/profile'
 import { Settings } from './pages/app/settings/settings'
 import { Tasks } from './pages/app/Tasks/tasks'
 import { SignIn } from './pages/auth/sign-in'
@@ -23,7 +22,6 @@ export const router = createBrowserRouter([
       { path: '/forum', element: <Forum /> },
       { path: '/report', element: <Report /> },
       { path: '/settings', element: <Settings /> },
-      { path: '/profile', element: <Profile /> },
     ],
   },
   {

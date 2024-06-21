@@ -46,6 +46,7 @@ export function Settings() {
     }
 
     console.log(photoURL)
+    console.log(image)
   }
 
   const apiKey = 'JhpxIdcTIbHcmpsIb2dmsZw2oWHiz8fTy55abAOeWVBA1GJHWsqG9M0YsppN' // Substitua com seu token de API do TinyURL

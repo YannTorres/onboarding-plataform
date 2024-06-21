@@ -1,6 +1,10 @@
 import { DialogContent } from '@radix-ui/react-dialog'
 
-import { DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import {
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 export function NewPost() {
   return (
@@ -9,7 +13,6 @@ export function NewPost() {
         <DialogTitle>Adicionar um Novo Post</DialogTitle>
         <DialogDescription>Detalhes do Post</DialogDescription>
       </DialogHeader>
-      
     </DialogContent>
   )
 }

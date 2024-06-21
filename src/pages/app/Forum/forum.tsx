@@ -6,6 +6,7 @@ import { z } from 'zod'
 import Gordao from '@/assets/gordao.png'
 import Lucon from '@/assets/lucon.png'
 import MeuAmor from '@/assets/meuamor.png'
+import UsuarioAnonimo from '@/assets/usuarioAnonimo.jpg'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -16,13 +17,14 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 import { useAuth } from '@/contexts/authContext'
 
 import { PostsForum } from './posts-forum'
 
 const newPostFormSchema = z.object({
   title: z.string().min(1),
-  name: z.string().min(1),
+  description: z.string().min(1),
 })
 
 type newPostForm = z.infer<typeof newPostFormSchema>
@@ -31,6 +33,7 @@ export type Post = {
   photo: string
   title: string
   name: string
+  description: string
 }
 
 export function Forum() {
@@ -39,18 +42,24 @@ export function Forum() {
   const [postsArray, setPostsArray] = useState<Post[]>([
     {
       photo: Lucon,
-      title: '@fluentui/react-context-selector ou use-context-selector',
+      title: 'Problemas com a realização de requisições',
       name: 'Lucas Tucunduva',
+      description:
+        'Estou com problemas para fazer requisições para a API publica do Google Maps, alguém pode me ajudar?',
     },
     {
       photo: Gordao,
-      title: 'Problema com a requisição Restaurant',
+      title: 'Problemas com criação de rotas na minha aplicação',
       name: 'Luiz Felipe Medeiros',
+      description:
+        'Estou com problemas para criar rotas na minha aplicação, alguém pode me ajudar?',
     },
     {
       photo: MeuAmor,
       title: 'Problemas com Autenticação no Next',
       name: 'Thaynara Damazio',
+      description:
+        'Estou com problemas para fazer a autenticação no Next, alguém pode me ajudar?',
     },
   ])
 
@@ -65,16 +74,16 @@ export function Forum() {
   function handleForm(data: newPostForm) {
     if (currentUser) {
       const post = {
-        photo: currentUser?.photoURL,
+        photo: currentUser.photoURL || UsuarioAnonimo,
         title: data.title,
-        name: data.name,
+        name: currentUser.displayName || '',
+        description: data.description,
       }
 
       setPostsArray([...postsArray, post])
       reset()
     }
   }
-
   return (
     <div className="flex flex-col gap-14">
       <div className="flex flex-col items-center justify-center gap-2">
@@ -101,29 +110,30 @@ export function Forum() {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Adicionar um novo Post</DialogTitle>
+                  <DialogTitle>Adicionar uma nova publicação</DialogTitle>
                   <form
                     onSubmit={handleSubmit(handleForm)}
                     className="flex flex-col"
                   >
                     <Label htmlFor="postTitle" className="mb-2 mt-5">
-                      Titulo do Post:
+                      Titulo da publicação:
                     </Label>
                     <Input
                       {...register('title')}
                       id="postTitle"
-                      placeholder="Adicione um Título para o seu Post."
+                      placeholder="Adicione um Título para a sua publicação."
                     />
-                    <Label htmlFor="postName" className="mb-2 mt-2">
-                      Seu Nome:
+                    <Label htmlFor="postTitle" className="mb-2 mt-5">
+                      Descrição da publicação:
                     </Label>
-                    <Input
-                      {...register('name')}
-                      id="postName"
-                      placeholder="Qual o seu nome?"
+                    <Textarea
+                      {...register('description')}
+                      id="postDescription"
+                      placeholder="Adicione uma descrição para a sua publicação."
+                      className="resize-none"
                     />
                     <Button className="mt-2 bg-teal-800 px-7 text-white hover:bg-teal-700">
-                      Enviar o Post
+                      Enviar Publicação
                     </Button>
                   </form>
                 </DialogHeader>
@@ -139,6 +149,7 @@ export function Forum() {
             title={post.title}
             name={post.name}
             photo={post.photo}
+            description={post.description}
           />
         ))}
       </div>

@@ -14,6 +14,7 @@ interface TasksProps {
   taskPriority: string
   tasksArray: TasksInputsForm[]
   setTasksArray: React.Dispatch<React.SetStateAction<TasksInputsForm[]>>
+  pageIndex: number
 }
 
 export function TasksTableRow({
@@ -22,11 +23,14 @@ export function TasksTableRow({
   taskPriority,
   tasksArray,
   setTasksArray,
+  pageIndex,
 }: TasksProps) {
   function removeTask() {
     setTasksArray(tasksArray.filter((task) => taskName !== task.taskName))
   }
 
+  const pageIndexx = pageIndex
+  console.log(pageIndexx)
   const [checkboxState, setCheckboxState] = useState(false)
 
   function setFinishedTask() {

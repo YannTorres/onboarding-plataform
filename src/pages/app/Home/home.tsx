@@ -1,4 +1,15 @@
+import { Star } from 'lucide-react'
+
+import Gordao from '@/assets/gordao.png'
 import Logo from '@/assets/Logo Workday.svg'
+import { Card, CardContent } from '@/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 
 export function Home() {
   return (
@@ -86,6 +97,93 @@ export function Home() {
             inovadora, transformando a maneira como as pessoas pensam e
             interagem com os mercados financeiros.
           </p>
+        </div>
+      </div>
+      <div className="mb-10 flex flex-col items-center">
+        <h3 className="text-4xl font-bold">Depoimentos</h3>
+        <p className="mb-14 mt-1 text-lg font-semibold">
+          Depoimentos de funcionários que acreditam na gente!
+        </p>
+        <Carousel
+          opts={{
+            align: 'start',
+          }}
+          className="w-[1400px]"
+        >
+          <CarouselContent>
+            {Array.from({ length: 10 }).map((_, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+                <div className="p-1">
+                  <Card>
+                    <CardContent className="flex aspect-square flex-col items-center justify-center p-6">
+                      <div className="mb-5 flex flex-row gap-3">
+                        <img src={Gordao} alt="" />
+                        <div>
+                          <p>Luiz Felipe Medeiros</p>
+                          <div className="flex flex-row">
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Molestias, est? Esse veritatis velit modi cumque
+                          ipsam dicta possimus quam similique, corporis vel
+                          omnis mollitia dolorum neque laboriosam labore quaerat
+                          quae.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+      <div className="mb-10 flex flex-col items-center">
+        <h3 className="text-4xl font-bold">Sobre nós</h3>
+        <p className="mb-5 mt-1 text-lg font-semibold">
+          Um pouco mais sobre os benefícios de trabalhar conosco!
+        </p>
+        <div className="mt-1">
+          <li className="leading-7">
+            Acompanhamento gestacional e pós-parto para novos papais e mamães.
+          </li>
+          <li className="leading-7">
+            Até 10% de desconto em cursos de programação Front-End e Back-End,
+            mobile, design, UX e metodologias ágeis.
+          </li>
+          <li className="leading-7">
+            Até 25% de desconto na contratação dos seguros Automóvel e
+            Residência para você e seus familiares.
+          </li>
+          <li className="leading-7">
+            Até 85% de desconto na compra de medicamentos para você economizar
+            sem abrir mão da sua saúde.
+          </li>
+          <li className="leading-7">
+            Bolsas em escolas de idiomas para quem pretende aprender ou
+            aperfeiçoar um idioma.
+          </li>
+          <li className="leading-7">
+            Bolsas em universidades para impulsionar seus estudos.
+          </li>
+          <li className="leading-7">
+            Bônus de R$250 a R$15K para comemorar seu aniversário de empresa de
+            um jeito inesquecível.
+          </li>
+          <li className="leading-7">
+            Clube de descontos com condições especiais e vários estabelecimentos
+            em todo Brasil.
+          </li>
         </div>
       </div>
     </div>
